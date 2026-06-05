@@ -77,6 +77,12 @@ app.post("/chat", async (req, res) => {
 // 커스텀 함수
 async function useGoogleGenAI(model, ask) {
   return new ChatGoogleGenerativeAI({
+    // npm i @langchain/google-genai
+    // https://www.npmjs.com/package/@langchain/google-genai
+    // [Model]
+    // gemini-3.1-flash-lite
+    // gemma-4-26b-a4b-it // moe
+    // gemma-4-31b-it // dense
     apiKey: process.env.GEMINI_API_KEY,
     model,
     temperature: 0.7,
@@ -86,6 +92,14 @@ async function useGoogleGenAI(model, ask) {
 
 async function useGroq(model) {
   return new ChatGroq({
+    // npm i @langchain/groq
+    // https://www.npmjs.com/package/@langchain/groq
+    // https://console.groq.com/docs/rate-limits
+    // [Model]
+    // openai/gpt-oss-20b // 빠름
+    // openai/gpt-oss-120b // 생각 깊음
+    // qwen/qwen3-32b // 추론형 모델 (thinking)
+    // meta-llama/llama-4-scout-17b-16e-instruct
     apiKey: process.env.GROQ_API_KEY,
     model,
     temperature: 0.7,
@@ -95,7 +109,17 @@ async function useGroq(model) {
 
 async function useNim(model) {
   return new ChatOpenAI({
+    // npm i @langchain/openai
+    // https://www.npmjs.com/package/@langchain/openai
+    // https://build.nvidia.com/models?filters=nimType%3Anim_type_preview
+    // [Model]
+    // deepseek-ai/deepseek-v4-flash
+    // deepseek-ai/deepseek-v4-pro
+    //google/gemma-4-31b-it
     apiKey: process.env.NIM_API_KEY,
+    configuration: {
+      baseURL: "https://integrate.api.nvidia.com/v1",
+    },
     model,
     temperature: 0.7,
     maxOutputTokens: 512,
