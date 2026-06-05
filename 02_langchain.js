@@ -18,7 +18,7 @@ const { HumanMessage } = require("@langchain/core/messages");
 
 // 서버 세팅
 // const PORT = process.env.PORT ?? 3000;
-const PORT = process.env.PORT_01 ?? 3000;
+const PORT = process.env.PORT_02 ?? 3000;
 const app = express();
 
 // 미들웨어
