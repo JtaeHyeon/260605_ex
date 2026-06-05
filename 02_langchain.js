@@ -7,7 +7,7 @@ const express = require("express");
 const {} = require("@langchain/core");
 
 // 서버 세팅
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT_01 ?? 3000;
 const app = express();
 
 //middleware
@@ -15,8 +15,8 @@ app.use(express.json());
 
 //routher, endpoint...
 app.post("/chat", async (req, res) => {
-  console.log(...req.body);
-  res.json(...req.body);
+  console.log(req.body);
+  res.json(req.body);
 });
 
 //listener
